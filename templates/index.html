@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content  %}
+<!------------------------text area  -------------------->
+<div>
+<form method='post' action='/'>
+  <div class="mt">
+   {% if  enter %}
+   <!----------------------  get -------------------------->
+     <div class='container'> 
+        <div class='row justify-content-center'>
+          <div class='col-6'>
+          <p style="text-align:center;"><h4>Enter text here</h4></p>
+          <textarea id="w3review" name="originalText" rows="15" cols="70"></textarea>
+          <h4>Enter the summarized number of sentences you like to be outputted: </h4>
+          <input name='num_sentences'>
+          <br>
+          <br>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </div>
+    {% else %} 
+    <!-------------------------post-------------------------->
+    <div class='container'>
+        <div class='row justify-content-center'>
+          
+          <div class="col-4">
+            <h4>Original Text</h4>
+            <textbox rows="15" cols='50'>{{t1}}</textbox>
+          </div>
+          <div class="col-4">
+            <h4>Summary</h4>
+             <textbox  rows="15" cols='50'>
+                {% for sentence in output_summary %}
+					       <p> {{ sentence }} </p>
+				      	{% endfor %}
+              </textbox>
+          </div>
+
+
+        </div>
+    
+    </div>
+    {% endif %}
+  </div>
+ 
+  
+  
+</form>
+</div>
+
+
+
+{% endblock  %}

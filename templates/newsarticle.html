@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content  %}
+<form action='' method='POST'>
+{%if enter%}
+<input type='text' name='newsWord'>
+<button type='Submit'>Search</button>
+{%else%}
+
+<div class='col' name ='article'>
+    <div class='row '><textbox>{{title}}</textbox><br></div>
+    <div class='row'><textbox>{{text}}</textbox><br></div>
+    <div class='row'><textbox>{{summ}}</textbox><br></div>
+
+
+
+</div>
+{% endif %}
+</form>
+{% endblock  %}

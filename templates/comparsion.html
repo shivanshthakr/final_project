@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content  %}
+
+
+
+  <!-- SECTION: RESULTS FOR DIFFERENT SUMMARIZERS -->
+
+<div class="container">
+    <p class="text-center" style="font-size:300%">Enter Text for Comparsion</p>
+    <form action='/compare_summarizer' method='POST'>
+        <div class="row justify-content-center">
+            <div class="col-7">
+                <textarea  name='summCompare'rows="10" cols="100" ></textarea>
+            </div>
+        </div>
+        <div class="row">
+             <div class="col text-center">
+                 <button type="submit" class="btn btn-primary">Compare</button>
+            </div>
+        </div>
+  </form>
+  <div class="row m-4" >
+    <div class="col" style='horzitonal-align:middle'>
+    <p style="text-align:center;">Spacy Summarizer</p>
+      <textarea rows='7' cols='50' >{{sp_sum}}</textarea>
+    </div>
+    <div class="col" style='horzitonal-align:middle'>
+    <p style="text-align:center;">Nltk Summarizer</p>
+     <textarea rows='7' cols='50' >{{gen_sum}}</textarea>
+    </div>
+    <div class="col" style='horzitonal-align:middle'>
+    <p style="text-align:center;">Page Rank Summarizer</p>
+     <textarea rows='7' cols='50'>hi</textarea>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+{% endblock  %}
