@@ -22,19 +22,17 @@
     {% else %} 
     <!-------------------------post-------------------------->
     <div class='container'>
-        <div class='row justify-content-center'>
+        <div class='row justify-content-evenly'>
           
           <div class="col-4">
             <h4>Original Text</h4>
-            <textbox rows="15" cols='50'>{{t1}}</textbox>
+            <textarea rows="25" cols='50'>{{t1}}</textarea>
           </div>
           <div class="col-4">
             <h4>Summary</h4>
-             <textbox  rows="15" cols='50'>
-                {% for sentence in output_summary %}
-					       <p> {{ sentence }} </p>
-				      	{% endfor %}
-              </textbox>
+             <textarea  rows="20" cols='50'>
+                {{output_summary}}
+              </textarea>
           </div>
 
 

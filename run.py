@@ -16,6 +16,7 @@ from flask import Flask, render_template, request #Used to render .html template
 
 #spacy summarizer
 from spacy_summarizer import text_summarizer
+from sumy_summarizer import sumy_summarization
 
 #bert summarizer
 from bs4 import BeautifulSoup
@@ -104,8 +105,7 @@ class summarize:
 		sorted_sent_arr = sorted(sorted_sent_arr)
 
 		for i in range(0, len(sorted_sent_arr)):
-			sorted_output.append(original[sorted_sent_arr[i]])
-		print (sorted_sent_arr)
+			sorted_output.append(str(original[sorted_sent_arr[i]]))
 		return sorted_output
 
 
@@ -129,8 +129,7 @@ def hello_world():
 		text=request.form['originalText'] #Get text from html
 		max_value=sent_tokenize(text)
 		num_sent = int(request.form['num_sentences']) #Get number of sentence required in summary
-		sum1 = summarize()
-		summary=sum1.get_summary(text,num_sent)
+		summary=text_summarizer(text,num_sent)
 		print(summary)
 		return render_template('index.html',t1=request.form['originalText'],value=False,output_summary=summary)
 
@@ -139,13 +138,15 @@ def hello_world():
 @app.route('/compare_summarizer',methods=['GET','POST'])
 def comparsion():
 	if request.method=='GET':
-		return render_template('comparsion.html')
+		return render_template('comparsion.html' ,enter=True)
 	else:
 		inputtext=request.form['summCompare']
 		sum2=summarize()
-		nltk_summary=sum2.get_summary(inputtext,3)
+		nltk_list=sum2.get_summary(inputtext,3)
+		nltk_summary=''.join(nltk_list)
 		spacy_summary=text_summarizer(inputtext)
-		return render_template('comparsion.html',gen_sum=nltk_summary,sp_sum=spacy_summary,bert_sum='')
+		sumy_summary=sumy_summarization(inputtext)
+		return render_template('comparsion.html',original=inputtext,enter=False,gen_sum=nltk_summary,sp_sum=spacy_summary,sumy_sum=sumy_summary)
 
 	  
 ########### ---------------newssummary--------------------------- ###########

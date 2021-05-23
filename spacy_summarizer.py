@@ -53,7 +53,7 @@ stopwords=list(STOP_WORDS)
 from string import punctuation
 punctuation=punctuation+ '\n'
 
-def text_summarizer(raw_docx):
+def text_summarizer(raw_docx,num_sentence=3):
     nlp = spacy.load('en_core_web_sm')
     doc= nlp(raw_docx)
     tokens=[token.text for token in doc]
@@ -78,8 +78,7 @@ def text_summarizer(raw_docx):
                 else:
                     sentence_scores[sent]+=word_frequencies[word.text.lower()]
     from heapq import nlargest
-    summary=nlargest(3, sentence_scores,key=sentence_scores.get)
+    summary=nlargest(num_sentence, sentence_scores,key=sentence_scores.get)
     final_summary=[word.text for word in summary]
-    final_summary
     summary=''.join(final_summary)
     return summary

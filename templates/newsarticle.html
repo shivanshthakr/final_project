@@ -1,19 +1,39 @@
 {% extends 'base.html' %}
 {% block content  %}
-<form action='' method='POST'>
-{%if enter%}
-<input type='text' name='newsWord'>
-<button type='Submit'>Search</button>
-{%else%}
-
-<div class='col' name ='article'>
-    <div class='row '><textbox>{{title}}</textbox><br></div>
-    <div class='row'><textbox>{{text}}</textbox><br></div>
-    <div class='row'><textbox>{{summ}}</textbox><br></div>
 
 
+<section id="cover" class="min-vh-100">
+    <div id="cover-caption">
+        <div class="container">
+           {% if enter %}
+            <div class="row">
+                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                    <h1 class="display-4 py-2 text-truncate">Search Keyword</h1>
+                    <div class="px-2">
+                        <form action="/news_summary" class="justify-content-center"method='POST'>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name='newsWord'>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-lg">Search</button>
+                        </form>
+                    </div>
+                </div>
+                {%else%}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{title}}</h5>
+                        <p class="card-text">{{summ}}</p>
+                    </div>
+                </div>
 
-</div>
-{% endif %}
-</form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
 {% endblock  %}

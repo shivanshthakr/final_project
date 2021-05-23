@@ -1,3 +1,4 @@
+#for testing only no use in app
 from GoogleNews import GoogleNews
 from newspaper import Article
 from newspaper import Config
