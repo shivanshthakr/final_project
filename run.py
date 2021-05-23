@@ -9,7 +9,9 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
 from nltk.probability import FreqDist
 
-#Gensim Summarizer
+from urllib.request import urlopen
+
+
 #from gensim.summarization import summarize
 from flask import Flask, render_template, request #Used to render .html templates
 
@@ -118,8 +120,6 @@ class summarize:
 
 
 
-
-
 ######   --------------  home page   ------------------   #####
 @app.route('/',methods=['GET','POST'])
 def hello_world():
@@ -174,6 +174,22 @@ def urlandpdf():
 			list.append(dict)
 		return render_template('newsarticle.html',title=list[0]['Title'],text=list[0]['Article'],summ=list[0]['Summary'])
 
+
+
+
+################--------------linkSummary----------------------- ##############
+@app.route('/link_summary',methods=['GET','POST'])
+def fetch_and_analayse():
+	if request.method=='GET':
+		return render_template('link_summary.html',enter=True)
+	else:
+		url=request.form['raw_url']
+		page = urlopen(url)
+		soup = BeautifulSoup(page)
+		fetched_text = ' '.join(map(lambda p:p.text,soup.find_all('p')))
+		max_value = sent_tokenize(fetched_text)
+		summary = text_summarizer(fetched_text, 3)
+		return render_template('link_summary.html',enter=False,original_text = fetched_text, output_summary = summary)
 
 
 if __name__=='__main__':

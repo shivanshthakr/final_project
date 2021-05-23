@@ -9,9 +9,9 @@
     <p class="text-center" style="font-size:300%">Enter Text for Comparsion</p>
     <form action='/compare_summarizer' method='POST'>
         {%if enter%}
-        <div class="row justify-content-center">
-            <div class="col-7">
-                <textarea  name='summCompare'rows="10" cols="100" ></textarea>
+        <div class="row justify-content-center" >
+            <div class="col-7" >
+                <textarea  name='summCompare'rows="10" cols="100" style=' border: 3px solid green;padding: 10px;' ></textarea>
             </div>
         </div>
         <div class="row">
@@ -20,7 +20,7 @@
             </div>
         </div>
       {%else%}
-      <div class="row justify-content-center">
+      <div class="row justify-content-center " style=' border: 3px solid green;padding: 10px;'>
             <div class="col-7">
                 <textarea  rows="10" cols="100" >{{original}}</textarea>
             </div>
@@ -31,15 +31,15 @@
   
     <div class="col" style='horzitonal-align:middle'>
     <p class="font-weight-bold" style="text-align:center;font-size:150%;">Spacy Summarizer</p>
-      <textarea rows='7' cols='50' >{{sp_sum}}</textarea>
+      <textarea rows='7' cols='45' style=' border: 3px solid green;padding: 10px;'>{{sp_sum}}</textarea>
     </div>
     <div class="col" style='horzitonal-align:middle'>
     <p class="font-weight-bold" style="text-align:center;font-size:150%;">Nltk Summarizer</p>
-     <textarea rows='7' cols='50' >{{gen_sum}}</textarea>
+     <textarea rows='7' cols='45' style=' border: 3px solid green;padding: 10px;'>{{gen_sum}}</textarea>
     </div>
     <div class="col" style='horzitonal-align:middle'>
     <p class="font-weight-bold" style="text-align:center;font-size:150%;">Sumy Summarizer</p>
-     <textarea rows='7' cols='50'>{{sumy_sum}}</textarea>
+     <textarea rows='7' cols='45'style=' border: 3px solid green;padding: 10px;'>{{sumy_sum}}</textarea>
     </div>
   </div>
 </div>
