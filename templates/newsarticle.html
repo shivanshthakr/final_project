@@ -20,13 +20,14 @@
                     </div>
                 </div>
                 {%else%}
-                <div class="card" style="width: 18rem;">
+                <div>
+                 <p style="text-align:center; font-size:200%">{{title}}</p>
+                 <div class="card" style="margin: auto;width: 50%; border: 3px solid green;padding: 10px;">
                     <div class="card-body">
-                        <h5 class="card-title">{{title}}</h5>
                         <p class="card-text">{{summ}}</p>
                     </div>
                 </div>
-
+                </div>
                 {% endif %}
             </div>
         </div>
